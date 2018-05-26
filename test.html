@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>使用对象控制画布上的元素</title>
+    <style>
+        #canvas {
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="300px" height="300px"></canvas>
+<script>
+    // TODOS: 给基础构造函数 Array 原型增加 .delete 方法，使得可以正确运行下面的代码
+    Array.prototype.delete = function(val) {
+
+        this.forEach(function(item, i, arr) {
+            if(item === val) arr.splice(i, 1);
+        });
+
+
+
+
+    }
+
+    var arr = ['a', 'b', 'c', 'a'];
+    arr.delete('b');
+    console.log(arr); // ['a', 'c', 'a']
+    arr.delete('a');
+    console.log(arr); // ['c']
+
+</script>
+</body>
+</html>
