@@ -1,0 +1,28 @@
+.wrap {
+  width: 100vw;
+  overflow: hidden;
+}
+/* 弹出层 */
+.popup-wrap {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 50px;
+  border: 5px currentColor dashed;
+  background-color: #1b1b1b;
+}
+/* 提示层 */
+.tips-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.tips-title {
+  color: #000;
+  background-color: #0f0;
+}

@@ -1,0 +1,55 @@
+{
+  "name": "shooting-game",
+  "version": "1.0.0",
+  "description": "多人 在线 坦克 射击 游戏",
+  "main": "shooting-game-server.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.3.0",
+    "koa-session": "^5.8.1",
+    "koa-static": "^4.0.2",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "postcss": "^6.0.22",
+    "postcss-loader": "^2.1.5",
+    "postcss-sprites": "^4.2.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2",
+    "worker-loader": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:client": "node ./build/devServer.js",
+    "build:dev": "webpack --config ./build/webpack.config.dev.js  --display-used-exports --optimize-dedupe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GarvenZhang/shooting-game.git"
+  },
+  "author": "garven",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GarvenZhang/shooting-game/issues"
+  },
+  "homepage": "https://github.com/GarvenZhang/shooting-game#readme"
+}

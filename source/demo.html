@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+li{ list-style:none;}
+#ul1{ height:auto; overflow:hidden; margin:20px auto; border:1px #000 solid; border-bottom:none; border-right:none;}
+#ul1 li{border:1px #000 solid; border-top:none; border-left:none; float:left;}
+#ul1 li.sty1{ background:red;}
+#ul1 li.sty2{ background:green;}
+#ul1 li.sty3{ background:blue;}
+#input1{ width:100px; position:absolute; left:50%; margin-left:-50px;}
+</style>
+</head>
+
+<body>
+<ul id="ul1">
+</ul>
+<input type="button" value="开始寻路" id="input1">
+<script>
+// === 寻路模式： === //
+// === 1 深度优先搜索: 不一定最优 === //
+// === 2 广度优先搜索 === //
+// === 3 启发式搜索：跟人类的思考方式一样，兼并了性能与最优路径 === //
+// === 3.1 A*算法 === //
+
+// === A*寻路： === //
+// === 1 估价函数：f(n) = g(n) + h(n) === //
+// === 1.1 f(n): n节点估价函数 === //
+// === 1.2 g(n): 初始点 到 n节点 的实际代价(路径长度) === //
+// === 1.3 h(n): n节点 到 目标点 的实际代价(路径长度) === //
+
+var oUl = document.getElementById('ul1');
+var aLi = oUl.getElementsByTagName('li');
+var oInput = document.getElementById('input1');
+var beginLi = oUl.getElementsByClassName('sty1');
+var endLi = oUl.getElementsByClassName('sty2');
+
+var map = [
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,1,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,2,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+];
+
+// 列数
+var cols = Math.sqrt(map.length);
+// 网格大小
+var sizeGird = 20;
+// open队列：收集需要走的路线
+var openArr = [];
+// 终止列表：排除不需要走得路线
+var closeArr = [];
+
+// 初始化
+init();
+
+function init(){
+
+  // 创建地图
+	createMap();
+
+	// 开始寻路
+	oInput.onclick = function(){
+		openFn();
+	};
+}
+
+function createMap(){
+
+	oUl.style.width = cols * (sizeGird + 1) + 'px';
+
+	for(var i=0;i<map.length;i++){
+
+	  // 创建li
+		var oLi = document.createElement('li');
+		oLi.style.width = sizeGird + 'px';
+		oLi.style.height = sizeGird + 'px';
+		oUl.appendChild(oLi);
+
+		// 起始点
+    // 放进open队列
+		if( map[i] == 1 ){
+			oLi.className = 'sty1';
+			openArr.push(oLi);
+		}
+
+		// 终点
+		else if(map[i] == 2){
+			oLi.className = 'sty2';
+		}
+
+		// 障碍物
+    // 放进close队列
+		else if(map[i] == 3){
+			oLi.className = 'sty3';
+			closeArr.push(oLi);
+		}
+
+	}
+}
+
+// 寻路函数
+function openFn(){
+
+  // 当前查找点
+	var nowLi = openArr.shift();
+
+	// 判断是否找到了终点
+	if( nowLi == endLi[0] ){
+		showLine();
+		return;
+	}
+
+	// close队列接收
+	closeFn(nowLi);
+
+	// 找到下一个点
+	findLi(nowLi);
+
+	//console.log( openArr );
+
+  // 排序
+  // 使得每次open队列中永远是按照最优路径来排
+	openArr.sort(function(li1,li2){
+		return li1.num - li2.num;
+	});
+
+	//console.log( openArr );
+  // 递归
+	openFn();
+
+}
+
+
+function closeFn(nowLi){
+	closeArr.push( nowLi );
+}
+
+// 找到后放进open队列
+function findLi(nowLi){
+
+	var result = [];
+
+	// 过滤
+	for(var i=0;i<aLi.length;i++){
+		if( filter(aLi[i]) ){
+			result.push( aLi[i] );
+		}
+	}
+
+  // 过滤函数
+	function filter(li){
+
+	  // 若close队列中存在，则排除
+		for(var i=0;i<closeArr.length;i++){
+			if( closeArr[i] == li ){
+				return false;
+			}
+		}
+
+		// 若open列表中存在，也排除
+		for(var i=0;i<openArr.length;i++){
+			if( openArr[i] == li ){
+				return false;
+			}
+		}
+
+
+		return true;
+	}
+
+	// 找相邻的
+  // 通过衡量两个的距离差值来判断
+  // 即找到周围的8个
+	for(var i=0;i<result.length;i++){
+
+		if( (Math.abs(nowLi.offsetLeft - result[i].offsetLeft)<= sizeGird + 1) && (Math.abs(nowLi.offsetTop - result[i].offsetTop)<= sizeGird + 1) ){
+
+		  // 计算估价值
+			result[i].num = f(result[i]);
+			// 设置父节点
+			result[i].parent = nowLi;
+			openArr.push( result[i] );
+		}
+
+	}
+
+}
+
+function showLine(){
+
+	var result = [];
+
+	// close队列中最后一个点
+	var lastLi = closeArr.pop();
+	var iNow = 0;
+
+	// 往回找
+	findParent(lastLi);
+
+	function findParent(li){
+		result.unshift(li);
+
+		// 知道第一个点
+    // 路径补全
+		if( li.parent == beginLi[0] ){
+			return;
+		}
+		findParent(li.parent);
+	}
+
+	var timer = setInterval(function(){
+
+		result[iNow].style.background = 'red';
+		iNow++;
+		if(iNow == result.length){
+			clearInterval(timer);
+		}
+	},500);
+
+}
+
+// 估价函数
+function f(nodeLi){
+	return g(nodeLi) + h(nodeLi);
+}
+
+//
+function g(nodeLi){
+	var a = beginLi[0].offsetLeft - nodeLi.offsetLeft;
+	var b = beginLi[0].offsetTop - nodeLi.offsetTop;
+	return Math.sqrt(a*a + b*b);
+}
+function h(nodeLi){
+	var a = endLi[0].offsetLeft - nodeLi.offsetLeft;
+	var b = endLi[0].offsetTop - nodeLi.offsetTop;
+	return Math.sqrt(a*a + b*b);
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+.wrap {
+  width: 99vw;
+  padding-left: 1vw;
+  overflow: hidden;
+}
+/* 弹出层 */
+.popup-wrap,
+.emotions-list {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 50px;
+  border: 5px currentColor dashed;
+  background-color: #1b1b1b;
+}
+/* 左边信息区域 */
+.msgs-wrap {
+  width: 80%;
+  height: 90vh;
+  overflow: auto;
+}
+.msgs-wrap::-webkit-scrollbar {
+  display: none;
+}
+.posted-msgs-wrap p {
+  word-wrap: break-word;
+}
+.system-info {
+  color: #61575c;
+}
+/* 右边房间属性区域 */
+.attr-wrap {
+  position: relative;
+  width: 20%;
+  height: 100vh;
+  padding-left: 20px;
+}
+.attr-wrap::before {
+  content: '#############################################################################################################################################################################################################';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 100vh;
+  word-wrap: break-word;
+}
+/* 信息发送区域 */
+.terminal-input-wrap {
+  position: fixed;
+  bottom: 1vh;
+  left: 1vw;
+  max-height: 48px;
+  overflow-y: hidden;
+  border-bottom: 1px solid currentColor;
+}
+.terminal-input-text::before {
+  content: '> ';
+}
+/* 表情 */

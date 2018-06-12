@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>public chatroom</title>
+  <link rel="stylesheet" href="/css/reset.css">
+</head>
+<body>
+  <div class="wrap clearfix">
+    <div class="msgs-wrap left">
+      <div class="posted-msgs-wrap">
+        <p>【】Welcome to public chatroom!【】</p>
+      </div>
+      <div class="terminal-input-wrap">
+      </div>
+    </div>
+    <div class="attr-wrap left clearfix">
+    </div>
+    <div class="popup-wrap hide">
+      <p>##</p>
+      <p>Shift: emoticons</p>
+      <p>##</p>
+      <p>Enter: post message</p>
+      <p>##</p>
+      <p>Alt/option + `: exit chatroom</p>
+      <p>##</p>
+      <p>Esc: exit current window</p>
+    </div>
+    <div class="emotions-list hide"></div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+</body>

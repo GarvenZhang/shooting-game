@@ -1,0 +1,21 @@
+.emotions-list {
+  width: 445px;
+  height: 213px;
+  font-size: 0;
+  padding: 0;
+  margin: 100px;
+}
+.emotions-item {
+  display: inline-block;
+  width: 29px;
+  height: 29px;
+  background: url("./qq-emotions.png") no-repeat;
+  background-size: 434px 202px;
+}
+.emotions-list .isCur {
+  outline: 1px solid green;
+}
+.emotions-list .js-receiveKey {
+  position: absolute;
+  left: -9999px;
+}
