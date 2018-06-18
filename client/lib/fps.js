@@ -14,7 +14,6 @@ let lastTime = 0
  * @return {Numner} - fps
  */
 export default function () {
-
   const now = Date.now()
 
   ++frame
@@ -23,7 +22,6 @@ export default function () {
 
   // 检测是否自上次检测后过了1s
   if (now >= 1000 + lastTime) {
-
     // 乘以1000，由ms换算成s
     fps = (frame * 1000) / (now - lastTime) | 0
 
@@ -32,7 +30,5 @@ export default function () {
     lastTime = now
 
     return fps
-
   }
-
 }

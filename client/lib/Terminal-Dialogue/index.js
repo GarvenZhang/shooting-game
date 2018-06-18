@@ -43,7 +43,7 @@ class TerminalDialogue {
     let process = this.process.bind(this)
     let msgs = this.msgs
     let ret = ''
-    for (var i = 0, msg; msg = msgs[i++]; ) {
+    for (var i = 0, msg; msg = msgs[i++];) {
       let isPaused = process(msg)
       ret += msg.html
       if (!isPaused) {

@@ -8,30 +8,30 @@
  * formatDate("YYYY-MM-DD hh:mm:ss", (new Date()));
  */
 module.exports = function (pattern, date) {
-  if (typeof date == 'number') date = new Date(date);
-  function formatNumber(data, format) { //
-    format = format.length;
-    data = data || 0;
-    return format == 1 ? data : String(Math.pow(10, format) + data).slice(-format);
+  if (typeof date === 'number') date = new Date(date)
+  function formatNumber (data, format) { //
+    format = format.length
+    data = data || 0
+    return format == 1 ? data : String(Math.pow(10, format) + data).slice(-format)
   }
 
-  var result = pattern.replace(/([YMDhsm])\1*/g, function(format) {
+  var result = pattern.replace(/([YMDhsm])\1*/g, function (format) {
     switch (format.charAt()) {
       case 'Y':
-        return formatNumber(date.getFullYear(), format);
+        return formatNumber(date.getFullYear(), format)
       case 'M':
-        return formatNumber(date.getMonth() + 1, format);
+        return formatNumber(date.getMonth() + 1, format)
       case 'D':
-        return formatNumber(date.getDate(), format);
+        return formatNumber(date.getDate(), format)
       case 'w':
-        return date.getDay() + 1;
+        return date.getDay() + 1
       case 'h':
-        return formatNumber(date.getHours(), format);
+        return formatNumber(date.getHours(), format)
       case 'm':
-        return formatNumber(date.getMinutes(), format);
+        return formatNumber(date.getMinutes(), format)
       case 's':
-        return formatNumber(date.getSeconds(), format);
+        return formatNumber(date.getSeconds(), format)
     }
-  });
-  return result;
+  })
+  return result
 }

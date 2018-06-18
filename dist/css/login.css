@@ -1,0 +1,87 @@
+.terminal-input-wrap {
+  display: inline-block;
+  width: 600px;
+}
+.terminal-input-text {
+  min-height: 24px;
+  /*border: 1px solid #0f0;*/
+}
+.terminal-input-wrap .cursor-char.en {
+  font: 16px/1 courier;
+}
+.terminal-input-wrap .cursor-char.cn {
+  width: 16px;
+  font: 16px/1 courier;
+}
+.terminal-input-wrap .cursor-char {
+  display: inline-block;
+  vertical-align: middle;
+}
+.terminal-input-wrap .shrink .cursor-before-and-after,
+.terminal-input-wrap .shrink .cursor-middle {
+  width: 8px;
+  height: 16px;
+}
+.terminal-input-wrap .shrink .cursor-before-and-after {
+  animation: cursorBeforeAndAfter 1s step-start infinite;
+}
+@keyframes cursorBeforeAndAfter {
+  from {
+    background-color: #000;
+  }
+  50% {
+    background-color: currentColor;
+  }
+  100% {
+    background-color: #000;
+  }
+}
+.terminal-input-wrap .shrink .cursor-middle {
+  width: 12px;
+  animation: cursorMiddle 1s step-start infinite;
+}
+@keyframes cursorMiddle {
+  from {
+    background-color: #000;
+  }
+  50% {
+    color: #000;
+    background-color: #0f0;
+  }
+  100% {
+    color: #0f0;
+    background-color: #000;
+  }
+}
+.terminal-input-wrap .terminal-input-textarea,
+.js-blur-tab {
+  position: absolute;
+  left: -9999px;
+}.wrap {
+  width: 100vw;
+  overflow: hidden;
+}
+/* 弹出层 */
+.popup-wrap {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 50px;
+  border: 5px currentColor dashed;
+  background-color: #1b1b1b;
+}
+/* 提示层 */
+.tips-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.tips-title {
+  color: #000;
+  background-color: #0f0;
+}

@@ -52,7 +52,7 @@ module.exports = function (io) {
   function update (eventName, param) {
     // 房间属性
     io.sockets.emit('chatroom-info', {
-      names: filterName(),
+      names: filterName()
     })
     // 用户动态
     switch (eventName) {

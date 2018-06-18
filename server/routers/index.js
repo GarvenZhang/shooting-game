@@ -24,7 +24,7 @@ router.post('/login', async ctx => {
   }
   // 跳转
   ctx.status = 302
-  ctx.redirect('/public-chatroom.html')
+  ctx.redirect('/chatroom.html')
 })
 
 module.exports = router

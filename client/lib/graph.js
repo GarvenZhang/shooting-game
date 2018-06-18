@@ -6,7 +6,6 @@ import Stack from './Stack.js'
  * 图类
  */
 class Graph {
-
   constructor () {
     this.vertices = []  // 存储顶点
     this.adjList = new Dictionary() // 存储边
@@ -165,7 +164,6 @@ class Graph {
     // 完成时间
     f[u] = ++this.time
   }
-
 }
 
 export default Graph

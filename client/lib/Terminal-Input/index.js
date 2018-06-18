@@ -14,7 +14,6 @@ import './index.css'
  * @private
  */
 class TerminalInput {
-
   constructor (wrap, output, resultFn) {
     this.$wrap = wrap // 包裹层
     this.$text = null // 可视化层
@@ -39,7 +38,6 @@ class TerminalInput {
    * 创建html基本结构
    */
   createHtml () {
-
     let $wrap = this.$wrap
     $wrap.innerHTML = `
         <p class="terminal-input-text"></p>
@@ -52,7 +50,6 @@ class TerminalInput {
    * 创建input，"禁用"tab键
    */
   createFakeTab () {
-
     if ($('.js-blur-tab')) {
       return
     }
@@ -61,7 +58,6 @@ class TerminalInput {
     input.className = 'js-blur-tab'
     input.type = 'text'
     document.body.appendChild(input)
-
   }
 
   /**
@@ -70,7 +66,6 @@ class TerminalInput {
    * @param {String} selectionStart 光标在内容中的位置
    */
   createContent (value, selectionStart) {
-
     let createSpan = this.createSpan
     let beforeStr = ''
     let afterStr = ''
@@ -117,7 +112,6 @@ class TerminalInput {
 
     // 替换掉换行与空格
     return ret.replace(/(?:[\r\n]|\s{2,})/g, '')
-
   }
 
   /**
@@ -133,7 +127,6 @@ class TerminalInput {
    * 获焦处理
    */
   focusHandle (e) {
-
     let $text = this.$text
     let $textarea = this.$textarea
 
@@ -145,17 +138,14 @@ class TerminalInput {
     $textarea.focus()
     $text.classList.add('shrink')
     e.stopPropagation()
-
   }
 
   /**
    * 失焦处理
    */
   blurHandle () {
-
     let $text = this.$text
     $text.classList.remove('shrink')
-
   }
 
   /**
@@ -172,7 +162,6 @@ class TerminalInput {
    * 键入处理
    */
   keyupHandle (e) {
-
     let $wrap = this.$wrap
     let $text = this.$text
     let $output = this.$output
@@ -186,7 +175,6 @@ class TerminalInput {
 
     // 发送
     if (e.keyCode === 13) {
-
       // 特殊字符检验
       if (/(?:^-h|^--help)/.test($textarea.value)) {
         openHelpLayer()
@@ -204,7 +192,6 @@ class TerminalInput {
       // reset
       $textarea.value = ''
       $text.innerHTML = '<span class="cursor-before-and-after cursor-char"></span>'
-
     }
   }
 
@@ -212,7 +199,6 @@ class TerminalInput {
    * 绑定事件
    */
   bindEvent () {
-
     let $text = this.$text
     let $textarea = this.$textarea
 
@@ -226,7 +212,6 @@ class TerminalInput {
    * 初始化
    */
   init () {
-
     this.createHtml()
 
     this.$text = $('.terminal-input-text')
@@ -237,9 +222,7 @@ class TerminalInput {
     this.bindEvent()
 
     this.$text.click()
-
   }
-
 }
 
 export default TerminalInput

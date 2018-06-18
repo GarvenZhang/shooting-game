@@ -30,7 +30,7 @@ let session = {
    * @private
    * @return {String|Boolean}
    */
-  getCookie: function(cookies, name) {
+  getCookie: function (cookies, name) {
     if (!cookies) {
       return false
     }
@@ -149,5 +149,4 @@ setInterval(function () {
   session.clear()
 }, expires * 1000)
 
-
-module.exports = session;
+module.exports = session

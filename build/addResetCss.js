@@ -52,9 +52,8 @@ function AddResetCss () {
 
 AddResetCss.prototype.apply = function (compiler) {
   compiler.plugin('emit', function (compilation, callback) {
-
     // 在dist中加入reset.css
-    const resetCss = fs.readFileSync(path.resolve(rootDir, './client/view/reset.css'), 'utf8')
+    const resetCss = fs.readFileSync(path.resolve(rootDir, './client/reset.css'), 'utf8')
 
     // 设置名称为 fileName 的输出资源
     compilation.assets['css/reset.css'] = {
@@ -71,7 +70,6 @@ AddResetCss.prototype.apply = function (compiler) {
     }
 
     callback()
-
   })
 }
 

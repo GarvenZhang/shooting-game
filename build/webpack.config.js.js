@@ -2,16 +2,16 @@ module.exports = {
   entry: {
 
     'login': [
-      './client/view/login/index.js'
+      './client/login/index.js'
     ],
 
     'chatroom': [
-      './client/view/chatroom/index.js'
+      './client/chatroom/index.js'
     ],
 
     'game': [
-      './client/view/game/js/index.js'
-    ],
+      './client/game/js/index.js'
+    ]
 
-  },
+  }
 }

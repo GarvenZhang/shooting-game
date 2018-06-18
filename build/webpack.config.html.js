@@ -6,7 +6,7 @@ const rootDir = process.cwd()
 module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(rootDir, './client/view/login/index.html'),
+      template: path.resolve(rootDir, './client/login/index.html'),
       inject: true,
       minify: {
         removeComment: true,
@@ -19,7 +19,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: path.resolve(rootDir, './client/view/chatroom/index.html'),
+      template: path.resolve(rootDir, './client/chatroom/index.html'),
       inject: true,
       minify: {
         removeComment: true,
@@ -32,7 +32,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: path.resolve(rootDir, './client/view/game/index.html'),
+      template: path.resolve(rootDir, './client/game/index.html'),
       inject: true,
       minify: {
         removeComment: true,
@@ -42,6 +42,6 @@ module.exports = {
         'game'
       ],
       filename: 'game.html'
-    }),
+    })
   ]
 }

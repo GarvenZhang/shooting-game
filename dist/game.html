@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>射击游戏</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="/css/reset.css">
+<link href="/css/game.css" rel="stylesheet"></head>
+<body>
+  <div class="game-wrap">
+    <div class="start-scene hide">
+      <canvas class="start-layer"></canvas>
+    </div>
+    <div class="play-scene">
+      <canvas class="map-layer"></canvas>
+      <canvas class="tool-layer"></canvas>
+      <canvas class="soldier-layer"></canvas>
+      <canvas class="player-layer"></canvas>
+      <canvas class="sys-layer"></canvas>
+    </div>
+    <div class="end-scene hide">
+      <canvas class="end-layer"></canvas>
+    </div>
+  </div>
+
+<script type="text/javascript" src="/js/game.js"></script></body>
+</html>

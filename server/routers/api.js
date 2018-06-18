@@ -3,4 +3,3 @@
  */
 const router = require('koa-router')()
 const userModel = require('../model/user')
-

@@ -3,7 +3,6 @@ const WebpacDevServer = require('webpack-dev-server')
 const webpackConfig = require('./webpack.config.dev')
 
 const createIndexServer = (port) => {
-
   let app = new WebpacDevServer(webpack(webpackConfig), {
     contentBase: false,
     public: `http://localhost:${port}`,
@@ -12,7 +11,7 @@ const createIndexServer = (port) => {
     historyApiFallback: true,
     stats: {
       colors: true
-    },
+    }
   })
 
   app.listen(port, 'localhost', function (err) {

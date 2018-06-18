@@ -56,7 +56,7 @@ class Dictionary {
   showAll (fn) {
     let dS = this.dataStore
     let sortedKey = Object.keys(dS).sort()
-    for (var i = 0, item; item = sortedKey[i++]; ) {
+    for (var i = 0, item; item = sortedKey[i++];) {
       fn(dS[item], item)
     }
   }

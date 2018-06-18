@@ -1,0 +1,29 @@
+body {
+  position: relative;
+}
+
+/*
+// === 居中 - position之未知宽高 === //
+// === 1.实现： === //
+// === 1.1 父：relative === //
+// === 1.2 子：absolute, left/top 50%, translate -50%回到中央 === //
+// === 2.特点：子 未知宽高，且不会参与translate 的动画 === //
+*/
+.game-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ccc;
+  /*background: linear-gradient(-180deg, #040024 0%, #07165C 97%);*/
+}
+.game-wrap canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+
+
+
+
