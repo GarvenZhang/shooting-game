@@ -7,14 +7,34 @@
 </head>
 <body>
   <div class="wrap clearfix">
-    <div class="msgs-wrap left">
+    <div class="attr-wrap"></div>
+    <div class="match-wrap">
+      <div class="match-hd">
+        <a href="#" class="link">&lt;&lt; Go Back</a>
+      </div>
+      <div class="match-bd">
+        <div class="match-user">
+          <div class="user-avatar">
+            <img src="/img/avatar.png" alt="">
+          </div>
+          <div class="user-info">
+            <p class="info-field">name: <span class="info-name"></span></p>
+            <p class="info-field">email: <span class="info-email"></span></p>
+          </div>
+        </div>
+      </div>
+      <div class="match-ft">
+        <a class="link-start" href="./game.html">START</a>
+      </div>
+    </div>
+    <div class="msgs-wrap">
       <div class="posted-msgs-wrap">
-        <p>【】Welcome to public chatroom!【】</p>
+        <div class="posted-msgs-inner">
+          <p>【】Welcome to public chatroom!【】</p>
+        </div>
       </div>
       <div class="terminal-input-wrap">
       </div>
-    </div>
-    <div class="attr-wrap left clearfix">
     </div>
     <div class="popup-wrap hide">
       <p>##</p>
@@ -28,5 +48,4 @@
     </div>
     <div class="emotions-list hide"></div>
   </div>
-  <script src="/socket.io/socket.io.js"></script>
 </body>

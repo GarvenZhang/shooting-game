@@ -58,27 +58,10 @@ let msgs = [
     status: [2, 3],
     limited: ['y', 'n']
   },
-  {
-    id: 8,
-    html: `
-              <p>
-                Mr.garven: Which type of chatroom would you wanna enter? Multiple or
-                Personal[m/p]
-              </p>
-            `,
-    status: [1],
-    limited: []
-  },
-  {
-    id: 9,
-    html: '<p>user: <Terminal-Input/></p>',
-    status: [2, 3],
-    limited: ['m', 'p']
-  }
 ]
 
 let names = [
-  'name', 'email', 'isRemember', 'type'
+  'name', 'email', 'type'
 ]
 
 // 数据提交
@@ -88,13 +71,18 @@ function answersFn (answers) {
   form.action = '/login'
   form.method = 'post'
 
-  // 把数据逐个放进去
   answers.forEach((item, index) => {
+
+    // 把数据逐个放表单
     let input = document.createElement('input')
     input.type = 'text'
     input.name = names[index]
     input.value = item
     form.appendChild(input)
+
+    // 放进sessionStorage
+    sessionStorage.setItem(names[index], item)
+
   })
 
   // 提交按钮
@@ -105,6 +93,8 @@ function answersFn (answers) {
   // 扔进body中提交
   document.body.appendChild(form)
   form.submit()
+
+  // 存进sessionStorage
 
   // 移除
   document.body.removeChild(form)

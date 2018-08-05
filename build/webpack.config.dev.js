@@ -4,8 +4,9 @@ const postcss = require('postcss')
 const sprites = require('postcss-sprites')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const AddResetCss = require('./addResetCss')
+const WriteFilePlugin = require('write-file-webpack-plugin')
 
+const AddResetCss = require('./addResetCss')
 const htmlHandle = require('./webpack.config.html')
 const cssHandle = require('./webpack.config.css')
 const jsHandle = require('./webpack.config.js')
@@ -98,7 +99,8 @@ module.exports = merge({
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
 
-    new AddResetCss()
+    new AddResetCss(),
+    new WriteFilePlugin()
   ]
 
 }, htmlHandle, cssHandle, jsHandle)

@@ -118,7 +118,6 @@ let session = {
    * @private
    */
   updateExpires: function (sid) {
-    console.log(users, sid)
     let _expires = users[sid].expires
     _expires = _expires + expires
     users[sid].expires = _expires

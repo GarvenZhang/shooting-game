@@ -1,17 +1,21 @@
 module.exports = {
   entry: {
 
-    'login': [
+    login: [
       './client/login/index.js'
     ],
 
-    'chatroom': [
+    chatroom: [
       './client/chatroom/index.js'
     ],
 
-    'game': [
+    game: [
       './client/game/js/index.js'
-    ]
+    ],
+
+    menu: [
+      './client/menu/index.js'
+    ],
 
   }
 }

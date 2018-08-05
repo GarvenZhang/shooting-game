@@ -79,7 +79,7 @@
   left: -9999px;
 }
 .wrap {
-  width: 99vw;
+  width: 100vw;
   padding-left: 1vw;
   overflow: hidden;
 }
@@ -98,14 +98,84 @@
   border: 5px currentColor dashed;
   background-color: #1b1b1b;
 }
-/* 左边信息区域 */
+/* 左边玩家信息区域 */
+.match-wrap,
 .msgs-wrap {
+  margin-right: 20%;
+}
+.match-wrap {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 40vh;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.match-wrap::after {
+  content: '#############################################################################################################################################################################################################';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  letter-spacing: 10px;
+}
+.match-hd,
+.match-ft {
+  height: 20px;
+}
+.match-hd .link {
+  color: currentColor;
+}
+.match-bd {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.match-user {
+  width: 300px;
+  height: 80px;
+}
+.user-avatar {
+  width: 30%;
+  height: 100%;
+  border: 1px dashed currentColor;
+  float: left;
+  margin-right: 10px;
+}
+.link-start {
+  float: right;
+  color: #312c2c;
+  text-shadow: 1px 1px 0 #00F900;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+  animation: flashing ease-in .7s alternate both infinite;
+}
+@keyframes flashing {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .4;
+  }
+}
+.link-start:hover {
+  color: red;
+}
+
+/* 左边聊天信息区域 */
+.msgs-wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   width: 80%;
-  height: 90vh;
+  height: 60vh;
   overflow: auto;
 }
 .msgs-wrap::-webkit-scrollbar {
   display: none;
+}
+.posted-msgs-wrap {
+  flex: 1;
 }
 .posted-msgs-wrap p {
   word-wrap: break-word;
@@ -113,9 +183,19 @@
 .system-info {
   color: #61575c;
 }
+.terminal-input-wrap {
+  height: 20px;
+  overflow-y: hidden;
+  border-bottom: 1px solid currentColor;
+}
+.terminal-input-text::before {
+  content: '> ';
+}
+
 /* 右边房间属性区域 */
 .attr-wrap {
   position: relative;
+  float: right;
   width: 20%;
   height: 100vh;
   padding-left: 20px;
@@ -129,16 +209,7 @@
   height: 100vh;
   word-wrap: break-word;
 }
-/* 信息发送区域 */
-.terminal-input-wrap {
-  position: fixed;
-  bottom: 1vh;
-  left: 1vw;
-  max-height: 48px;
-  overflow-y: hidden;
-  border-bottom: 1px solid currentColor;
+
+.info-field {
+  width: 500px;
 }
-.terminal-input-text::before {
-  content: '> ';
-}
-/* 表情 */

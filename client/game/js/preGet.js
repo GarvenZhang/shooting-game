@@ -1,9 +1,9 @@
 import { $ } from '../../lib/$'
 import { game } from './config'
 import { set } from '../../lib/style'
+import io from 'socket.io-client'
 
 // 获取Node节点
-
 export let $wrap = $('.game-wrap')
 export let $startScene = $('.start-scene')
 export let $playScene = $('.play-scene')
@@ -48,4 +48,11 @@ set($wrap, 'height', `${game.h}px`);
 [$startLayer, $mapLayer, $playerLayer, $endLayer, $toolLayer, $sysLayer, $soldierLayer].forEach(item => {
   item.width = game.w
   item.height = game.h
+})
+
+// socket
+export const gameSocket = io('/game')
+console.log(gameSocket)
+gameSocket.on('test', function (data) {
+  console.log(data)
 })

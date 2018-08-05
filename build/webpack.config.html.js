@@ -15,7 +15,7 @@ module.exports = {
       chunks: [
         'login'
       ],
-      filename: 'login.html'
+      filename: 'index.html'
     }),
 
     new HtmlWebpackPlugin({
@@ -42,6 +42,19 @@ module.exports = {
         'game'
       ],
       filename: 'game.html'
+    }),
+
+    new HtmlWebpackPlugin({
+      template: path.resolve(rootDir, './client/menu/index.html'),
+      inject: true,
+      minify: {
+        removeComment: true,
+        collapseWhitespage: true
+      },
+      chunks: [
+        'menu'
+      ],
+      filename: 'menu.html'
     })
   ]
 }

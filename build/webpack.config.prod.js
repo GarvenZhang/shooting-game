@@ -35,8 +35,8 @@ module.exports = merge({
 
   output: {
     path: distDir,
-    filename: 'js/[name].js',
-    chunkFilename: '[name].js',
+    filename: 'js/[name]-[hash].js',
+    chunkFilename: '[name]-[hash].js',
     publicPath: '/',
     globalObject: 'this'
   },

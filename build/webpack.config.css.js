@@ -15,7 +15,7 @@ module.exports = {
 
   plugins: [
     new ExtractTextPlugin({
-      filename: 'css/[name].css', // [name] 表示每个入口都有对应的css提取
+      filename: 'css/[name]-[hash].css', // [name] 表示每个入口都有对应的css提取
       disable: false,
       allChunks: true
     })

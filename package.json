@@ -5,11 +5,12 @@
   "main": "shooting-game-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf ./dist/*",
     "dev:client": "node ./build/devServer.js",
     "dev:server": "cross-env NODE_ENV=development nodemon ./app-shooting-game.js",
     "dev:build": "webpack --config ./build/webpack.config.dev.js  --display-used-exports --optimize-dedupe",
-    "prod:build": "webpack --config ./build/webpack.config.prod.js  --display-used-exports --optimize-dedupe",
-    "prod:server": "",
+    "prod:build": "npm run clean && webpack --config ./build/webpack.config.prod.js  --display-used-exports --optimize-dedupe",
+    "prod:server": "cross-env NODE_ENV=production nodemon ./app-shooting-game.js",
     "pm2": "NODE_ENV=production pm2 start app-shooting-game.js"
   },
   "dependencies": {
@@ -45,7 +46,8 @@
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.2",
     "webpack-parallel-uglify-plugin": "^1.1.0",
-    "worker-loader": "^2.0.0"
+    "worker-loader": "^2.0.0",
+    "write-file-webpack-plugin": "^4.3.2"
   },
   "repository": {
     "type": "git",

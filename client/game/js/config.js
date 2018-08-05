@@ -1,12 +1,12 @@
 import '../img/sprite.png'
 
-import '../audio/bgm.mp3'
-import '../audio/bgm.ogg'
-import '../audio/fail.mp3'
-import '../audio/fail.ogg'
-import '../audio/shoot.mp3'
-import '../audio/shoot.ogg'
-import '../audio/success.mp3'
+// import '../audio/bgm.mp3'
+// import '../audio/bgm.ogg'
+// import '../audio/fail.mp3'
+// import '../audio/fail.ogg'
+// import '../audio/shoot.mp3'
+// import '../audio/shoot.ogg'
+// import '../audio/success.mp3'
 // import '../audio/success.ogg'
 
 // 常量
@@ -28,10 +28,10 @@ export let game = {
 
 // 音乐相关配置
 export let audio = {
-  bgm: './audio/bgm',
-  fail: './audio/fail',
-  succsee: './audio/success',
-  shoot: './audio/shoot'
+  // bgm: './audio/bgm',
+  // fail: './audio/fail',
+  // succsee: './audio/success',
+  // shoot: './audio/shoot'
 }
 
 // 图片相关配置

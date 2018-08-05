@@ -104,10 +104,10 @@ new ----------> ready ----------> running -------------> exit
 // === 5.3 轻量级进程: 在内核中实现，支持用户线程 === //
 
 self.onmessage = function (e) {
-  const path = Astar(e.data, {
-    x: 975,
-    y: 0
-  })
-  console.log(path)
-  self.postMessage(path)
+  // const path = Astar(e.data, {
+  //   x: 975,
+  //   y: 0
+  // })
+  // console.log(path)
+  // self.postMessage(path)
 }

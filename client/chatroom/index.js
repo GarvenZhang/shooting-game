@@ -1,8 +1,10 @@
 import { $ } from '../lib/$'
 import TerminalInput from '../lib/Terminal-Input'
 import emotionsModule from '../lib/emotions'
+import io from 'socket.io-client'
 
 import './index.css'
+import './avatar.png'
 
 let $postedMsgsWrap = $('.posted-msgs-wrap')
 let $msgWrap = $('.msgs-wrap')
@@ -11,11 +13,18 @@ let $input = $('.js-receiveKey')
 let $popupWrap = $('.popup-wrap')
 let $list = $('.emotions-list')
 let $textarea = $('.terminal-input-textarea')
+let $username = $('.info-name')
+let $email = $('.info-email')
+
+// 用户属性
+$username.textContent = sessionStorage.getItem('name')
+$email.textContent = sessionStorage.getItem('email')
+
 
 /**
  * socket.io服务
  */
-let socket = io.connect()
+let socket = io.connect('/chat')
 
 // 登陆
 let user = ''

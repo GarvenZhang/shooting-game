@@ -2,7 +2,7 @@ let formatDate = require('../client/lib/formatDate')
 let session = require('../client/lib/session')
 
 module.exports = function (io) {
-  io.sockets.on('connection', socket => {
+  io.on('connection', socket => {
     let cookies = socket.handshake.headers.cookie
     // 登陆
     socket.on('login', () => {
@@ -22,7 +22,7 @@ module.exports = function (io) {
     // 发言
     socket.on('post-message', message => {
       let ret = session.get(cookies)
-      io.sockets.emit('post-message', {
+      io.emit('post-message', {
         name: ret.name,
         message,
         time: formatDate('YYYY-MM-DD hh:mm:ss', new Date())
@@ -51,18 +51,18 @@ module.exports = function (io) {
    */
   function update (eventName, param) {
     // 房间属性
-    io.sockets.emit('chatroom-info', {
+    io.emit('chatroom-info', {
       names: filterName()
     })
     // 用户动态
     switch (eventName) {
       case 'user-leave':
-        io.sockets.emit('user-leave', {
+        io.emit('user-leave', {
           name: param.name
         })
         break
       case 'login':
-        io.sockets.emit('login', {
+        io.emit('login', {
           name: param.name
         })
         break
