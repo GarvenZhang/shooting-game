@@ -106,9 +106,10 @@ let session = {
    */
   update: function (cookies, data) {
     let sid = this.getCookie(cookies, 'sid')
-    if (!sid) {
+    if (!sid || !users[sid]) {
       return false
     }
+    console.log(users[sid], data)
     Object.assign(users[sid], data)
     return users[sid]
   },

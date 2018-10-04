@@ -7,6 +7,7 @@ import './index.css'
 import './avatar.png'
 
 let $postedMsgsWrap = $('.posted-msgs-wrap')
+let $postedMsgsInner = $('.posted-msgs-inner')
 let $msgWrap = $('.msgs-wrap')
 let $attrWrap = $('.attr-wrap')
 let $input = $('.js-receiveKey')
@@ -16,9 +17,19 @@ let $textarea = $('.terminal-input-textarea')
 let $username = $('.info-name')
 let $email = $('.info-email')
 
+// sessionStorage
+const NAME = sessionStorage.getItem('name')
+const EMAIL = sessionStorage.getItem('email')
+const TYPE = sessionStorage.getItem('type')
+
 // 用户属性
-$username.textContent = sessionStorage.getItem('name')
-$email.textContent = sessionStorage.getItem('email')
+$username.textContent = NAME
+$email.textContent = EMAIL
+
+// 跳转
+if (!(NAME && EMAIL && TYPE)) {
+  location.assign('/')
+}
 
 
 /**
@@ -33,7 +44,7 @@ socket.emit('login', '请求登陆')
 socket.on('login', ret => {
   if (ret.name) {
     let html = `<p class="system-info">##${ret.name} entered##</p>`
-    $postedMsgsWrap.innerHTML += html
+    $postedMsgsInner.innerHTML += html
     // 记录当前用户名
     user = ret.name
   } else if (ret.retCode === -1) {
@@ -55,15 +66,15 @@ socket.on('chatroom-info', data => {
 // 发送信息
 socket.on('post-message', data => {
   let html = `<p>${data.name === user ? '&gt; ' : ''}${data.name}[${data.time}]: ${data.message}</p>`
-  $postedMsgsWrap.innerHTML += html
+  $postedMsgsInner.innerHTML += html
   // 滑倒底部
-  $msgWrap.scrollTop = `100000000`
+  $postedMsgsInner.scrollTop = 100000000
 })
 
 // 离开房间提醒
 socket.on('user-leave', user => {
   let html = `<p class="system-info">--${user.name} left--</p>`
-  $postedMsgsWrap.innerHTML += html
+  $postedMsgsInner.innerHTML += html
 })
 
 /**

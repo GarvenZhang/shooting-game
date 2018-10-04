@@ -13,10 +13,10 @@ let app = new WebpacDevServer(webpack(webpackConfig), {
     colors: true
   },
   proxy: {
-    '*': `http://localhost:${config.dev.serverPort}`
+    '*': `http://localhost:${config.dev.serverPort}`,
     // '/': `http://localhost:${config.dev.serverPort}/login`,
-    // // 必须要有个路径，如果是*，则会找不到项目
-    // '/socket/*': `http://localhost:${config.dev.serverPort}`
+    // 必须要有个路径，如果是*，则会找不到项目
+    '/socket/*': `http://localhost:${config.dev.serverPort}`
   }
 })
 

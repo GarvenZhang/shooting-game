@@ -6,6 +6,15 @@ import './index.css'
 let $popupWrap = $('.popup-wrap')
 let $dialogueWrap = $('.dialogue-wrap')
 
+// 检测登录态
+const NAME = sessionStorage.getItem('name')
+const EMAIL = sessionStorage.getItem('email')
+const TYPE = sessionStorage.getItem('type')
+
+if (NAME && EMAIL && TYPE) {
+  location.assign('/chatroom.html')
+}
+
 /**
  * 对话服务
  */
