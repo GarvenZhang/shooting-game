@@ -1,10 +1,7 @@
 const path = require('path')
 const fs = require('fs')
-const postcss = require('postcss')
-const sprites = require('postcss-sprites')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const AddResetCss = require('./addResetCss')
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 
@@ -13,6 +10,7 @@ const cssHandle = require('./webpack.config.css')
 const jsHandle = require('./webpack.config.js')
 const rootDir = process.cwd()
 const distDir = path.resolve(rootDir, './dist')
+const CDNConfig = require('../config').CDN
 // const css = fs.readFileSync(path.resolve(rootDir, './client/css/style.css'), 'utf8')
 //
 // const spritesOpts = {
@@ -37,7 +35,7 @@ module.exports = merge({
     path: distDir,
     filename: 'js/[name]-[hash].js',
     chunkFilename: '[name]-[hash].js',
-    publicPath: '/',
+    publicPath: CDNConfig.host,
     globalObject: 'this'
   },
 
@@ -64,7 +62,8 @@ module.exports = merge({
           {
             loader: 'file-loader',
             options: {
-              name: 'img/[name].[ext]'
+              name: 'img/[name].[ext]',
+              publicPath: CDNConfig.host,
             }
           }
         ]
@@ -76,7 +75,8 @@ module.exports = merge({
           {
             loader: 'file-loader',
             options: {
-              name: 'audio/[name].[ext]'
+              name: 'audio/[name].[ext]',
+              publicPath: CDNConfig.host,
             }
           }
         ]
@@ -98,8 +98,6 @@ module.exports = merge({
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-
-    new AddResetCss(),
 
     new CompressionPlugin({
       asset: '[path].gz[query]',

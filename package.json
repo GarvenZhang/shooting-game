@@ -4,6 +4,7 @@
   "description": "多人 在线 坦克 射击 游戏",
   "main": "shooting-game-server.js",
   "scripts": {
+    "upload": "node ./build/upload.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf ./dist/*",
     "dev:client": "node ./build/devServer.js",
@@ -37,9 +38,8 @@
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "nodemon": "^1.17.5",
-    "postcss": "^6.0.22",
     "postcss-loader": "^2.1.5",
-    "postcss-sprites": "^4.2.1",
+    "qiniu": "^7.2.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.4",

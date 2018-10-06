@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const imgSrcModifiedPlugin = require('./imgSrcModifiedPlugin')
 const path = require('path')
 
 const rootDir = process.cwd()
@@ -55,6 +56,9 @@ module.exports = {
         'menu'
       ],
       filename: 'menu.html'
-    })
+    }),
+
+    new imgSrcModifiedPlugin(),
+
   ]
 }

@@ -1,0 +1,7 @@
+app-shooting-games:
+ - scripts: ./app-shooting-game.js
+   name: app-shooting-games
+   env_roduction:
+     NODE_ENV: production
+     HOST: localhost
+     PORT: 3007

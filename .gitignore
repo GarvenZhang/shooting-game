@@ -4,6 +4,3 @@ node_modules/
 
 ## 安全
 config.js
-server/auth/1_game.hellojm.cn_bundle.crt
-server/auth/2_game.hellojm.cn.key
-server/auth/config.js

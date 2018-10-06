@@ -98,6 +98,9 @@
   height: 90%;
   width: calc(100% + 20px);
 }
+.posted-msgs-inner p {
+  width: calc(100% - 20px);
+}
 .system-info {
   color: #61575c;
 }

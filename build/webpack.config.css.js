@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CDNCONFIG = require('../config').CDN
 
 module.exports = {
   module: {
@@ -7,7 +8,8 @@ module.exports = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader'
+          use: 'css-loader',
+          publicPath: CDNCONFIG.host
         })
       }
     ]

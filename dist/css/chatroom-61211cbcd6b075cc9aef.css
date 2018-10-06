@@ -68,7 +68,7 @@
   display: inline-block;
   width: 29px;
   height: 29px;
-  background: url(/img/qq-emotions.png) no-repeat;
+  background: url(//pg4cqp2rz.bkt.clouddn.com/img/qq-emotions.png) no-repeat;
   background-size: 434px 202px;
 }
 .emotions-list .isCur {
@@ -178,6 +178,9 @@
   height: 90%;
   width: calc(100% + 20px);
 }
+.posted-msgs-inner p {
+  width: calc(100% - 20px);
+}
 .system-info {
   color: #61575c;
 }
@@ -207,7 +210,7 @@
   position: absolute;
   left: 0;
   background-color: #0f0;
-  background: url(/img/井号.svg) 0 0;
+  background: url(//pg4cqp2rz.bkt.clouddn.com/img/井号.svg) 0 0;
   background-position: 0 0;
   background-size: 16px 16px;
 }
