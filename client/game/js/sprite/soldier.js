@@ -11,7 +11,7 @@ import {
 // === 1 安装worker-loader === //
 // === 2 webpack配置loader === //
 // === 3 引入： worker-loader![url] === //
-import MyWorker from 'worker-loader!../engine/worker.js'
+// import MyWorker from 'worker-loader!../engine/worker.js'
 
 class Soldier extends Node {
   constructor (ops) {

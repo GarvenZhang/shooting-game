@@ -51,7 +51,11 @@ const uploadAll = (dir, prefix) => {
 
 		if (fs.lstatSync(filePath).isDirectory()) {
 			return uploadAll(filePath, key)
-		}
+    }
+    
+    if (/\.html$/.test(key)) {
+      return
+    }
 
 		upload(key, filePath)
 		.then(resp => {

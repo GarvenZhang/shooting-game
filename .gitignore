@@ -1,6 +1,12 @@
 .idea/
 .DS_Store
+.vscode/
 node_modules/
 
 ## 安全
 config.js
+
+## 静态文件
+/dist/css/
+/dist/img/
+/dist/js/
